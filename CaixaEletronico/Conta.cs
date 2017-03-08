@@ -6,37 +6,21 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    class Conta
+    abstract class Conta
     {
         public int Numero { get; set; }
         public Cliente Titular { get; set; }
         public double Saldo { get; protected set; }
 
-       
 
-        public virtual void Saca(double valor)
-        {
-            this.Saldo -= valor;
-        }
 
-        public virtual void Deposita (double valor)
-        {
-            this.Saldo += valor;
-        }
+        public abstract void Saca(double valor);
+        
+        public abstract void Deposita(double valor);
 
-        public virtual void Atualiza (double taxa)
-        {
-            this.Saldo += this.Saldo * taxa;
-
-        }
-
-        public void Transfere(Conta destino, double valor)
-        {
-            this.Saca(valor);
-            destino.Deposita(valor);
+        public abstract void Transfere(Conta destino, double valor);
 
 
             
                     }
     }
-}

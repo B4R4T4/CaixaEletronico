@@ -28,7 +28,7 @@
         }
 
 
-        public bool PodeAbrirContar()
+        public bool PodeAbrirContaSozinho()
         {
             var  maiordeIdade = (this.idade >= 18);
             var  emancipado = (this.EEmancipado);

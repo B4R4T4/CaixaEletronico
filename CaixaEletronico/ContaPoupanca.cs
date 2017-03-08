@@ -6,19 +6,34 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    class ContaPoupanca : Conta
+    class ContaPoupanca : Conta, ITributavel
     {
-        public override void Saca(double valor)
+       
+
+        public override void Deposita (double valor)
         {
             this.Saldo = +valor;
+
         }
 
-
-
-        public override void Atualiza(double taxa)
+        public override void Saca(double valor)
         {
-            this.Saldo += this.Saldo * 3 * taxa;
+            this.Saldo = -valor;
         }
+
+        public override void Transfere(Conta destino, double valor)
+        {
+            this.Saca(valor);
+            destino.Deposita(valor);
+        }
+
+        public double CalculaTributo()
+        {
+            return this.Saldo * 0.03;
+
+        }
+
+
 
     }
     }

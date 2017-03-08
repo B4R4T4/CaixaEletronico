@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-     class ContaCorrente :Conta
-
-       
+    class ContaInvestimento : Conta, ITributavel
     {
+
         public override void Saca(double valor)
         {
-            this.Saldo -= valor * 0.02;
+            this.Saldo -= valor;
         }
+
         public override void Deposita(double valor)
         {
             this.Saldo += valor;
@@ -23,6 +23,14 @@ namespace CaixaEletronico
         {
             this.Saca(valor);
             destino.Deposita(valor);
+
+        }
+
+        public double CalculaTributo()
+        {
+
+            return this.Saldo * 0.02;
+
         }
     }
 }

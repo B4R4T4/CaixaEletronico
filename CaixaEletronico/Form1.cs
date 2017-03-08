@@ -33,26 +33,26 @@ namespace CaixaEletronico
        private void Form1_Load(object sender, EventArgs e)
        {
 
-           Cliente marcos = new Cliente();
+           var marcos = new Cliente();
            marcos.Nome = "Marcos";
 
-           Cliente victor = new Cliente();
+           var victor = new Cliente();
            victor.Nome = "Victor";
 
-           Cliente david = new Cliente();
+           var david = new Cliente();
            david.Nome = "David";
 
-           Conta conta1 = new Conta();
+           var conta1 = new ContaCorrente();
            conta1.Numero = 1;
            conta1.Titular = marcos;
             conta1.Titular.cpf = "134.232.580-02";
 
-           Conta conta2 = new Conta();
+           var conta2 = new ContaPoupanca();
            conta2.Numero = 2;
            conta2.Titular = victor;
             conta2.Titular.cpf = "323.234.678-55";
 
-            Conta conta3 = new Conta();
+            var conta3 = new ContaCorrente();
            conta3.Numero = 3;
            conta3.Titular = david;
             conta3.Titular.cpf = "121.060.304-19";
@@ -61,6 +61,12 @@ namespace CaixaEletronico
            this.contas[0] = conta1;
            this.contas[1] = conta2;
            this.contas[2] = conta3;
+
+            ContaCorrente contaCorrente = new ContaCorrente();
+            ContaPoupanca contaPoupanca = new ContaPoupanca();
+
+            contaCorrente.Deposita(100);
+            contaPoupanca.Deposita(100);
 
 
 
@@ -236,6 +242,24 @@ namespace CaixaEletronico
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GerarImpostos_Click(object sender, EventArgs e)
+        {
+            GerenciadorDeImposto gerenciador = new GerenciadorDeImposto();
+            ContaPoupanca cp = new ContaPoupanca();
+            SeguroDeVida sv = new SeguroDeVida();
+            cp.Deposita(100);
+            sv.tributo = 100;
+            gerenciador.Adciona(cp);
+            gerenciador.Adciona(sv);
+            MessageBox.Show("O total de impostos é: " + gerenciador.Total);
 
         }
     }

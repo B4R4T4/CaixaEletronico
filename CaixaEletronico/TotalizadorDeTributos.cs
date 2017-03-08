@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    class TotalizadorDeContas
+    class TotalizadorDeTributos
     {
         public double Total { get; private set; }
+        
 
-        public void Soma (Conta conta)
+
+
+        public void Acumula (ITributavel contaPoupanca)
         {
-            this.Total += conta.Saldo;
-           
+            this.Total += contaPoupanca.CalculaTributo();
+
+        }
         }
        
 
     }
-}
+

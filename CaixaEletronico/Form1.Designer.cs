@@ -56,6 +56,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textoCpfDestino = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textoImpostoSeguro = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textoImpostoPoupanca = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +98,7 @@
             // 
             // Deposita
             // 
-            this.Deposita.Location = new System.Drawing.Point(25, 230);
+            this.Deposita.Location = new System.Drawing.Point(36, 186);
             this.Deposita.Name = "Deposita";
             this.Deposita.Size = new System.Drawing.Size(75, 23);
             this.Deposita.TabIndex = 5;
@@ -103,7 +108,7 @@
             // 
             // Saca
             // 
-            this.Saca.Location = new System.Drawing.Point(115, 230);
+            this.Saca.Location = new System.Drawing.Point(126, 186);
             this.Saca.Name = "Saca";
             this.Saca.Size = new System.Drawing.Size(75, 23);
             this.Saca.TabIndex = 6;
@@ -113,7 +118,7 @@
             // 
             // textoValorDeposito
             // 
-            this.textoValorDeposito.Location = new System.Drawing.Point(25, 259);
+            this.textoValorDeposito.Location = new System.Drawing.Point(36, 215);
             this.textoValorDeposito.Name = "textoValorDeposito";
             this.textoValorDeposito.Size = new System.Drawing.Size(75, 20);
             this.textoValorDeposito.TabIndex = 7;
@@ -121,7 +126,7 @@
             // 
             // textoValorSaque
             // 
-            this.textoValorSaque.Location = new System.Drawing.Point(115, 259);
+            this.textoValorSaque.Location = new System.Drawing.Point(126, 215);
             this.textoValorSaque.Name = "textoValorSaque";
             this.textoValorSaque.Size = new System.Drawing.Size(75, 20);
             this.textoValorSaque.TabIndex = 8;
@@ -184,7 +189,7 @@
             // 
             // Transfere
             // 
-            this.Transfere.Location = new System.Drawing.Point(79, 298);
+            this.Transfere.Location = new System.Drawing.Point(90, 254);
             this.Transfere.Name = "Transfere";
             this.Transfere.Size = new System.Drawing.Size(75, 23);
             this.Transfere.TabIndex = 15;
@@ -194,7 +199,7 @@
             // 
             // valorOperacao
             // 
-            this.valorOperacao.Location = new System.Drawing.Point(79, 327);
+            this.valorOperacao.Location = new System.Drawing.Point(90, 283);
             this.valorOperacao.Name = "valorOperacao";
             this.valorOperacao.Size = new System.Drawing.Size(75, 20);
             this.valorOperacao.TabIndex = 16;
@@ -293,9 +298,57 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // textoImpostoSeguro
+            // 
+            this.textoImpostoSeguro.Location = new System.Drawing.Point(318, 208);
+            this.textoImpostoSeguro.Name = "textoImpostoSeguro";
+            this.textoImpostoSeguro.Size = new System.Drawing.Size(100, 20);
+            this.textoImpostoSeguro.TabIndex = 28;
+            this.textoImpostoSeguro.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(296, 176);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Gerar Impostos";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.GerarImpostos_Click);
+            // 
+            // textoImpostoPoupanca
+            // 
+            this.textoImpostoPoupanca.Location = new System.Drawing.Point(335, 234);
+            this.textoImpostoPoupanca.Name = "textoImpostoPoupanca";
+            this.textoImpostoPoupanca.Size = new System.Drawing.Size(100, 20);
+            this.textoImpostoPoupanca.TabIndex = 30;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(233, 211);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Seguro de vida";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(256, 237);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Poupanca";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(464, 434);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textoImpostoPoupanca);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textoImpostoSeguro);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textoCpfDestino);
@@ -361,6 +414,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textoCpfDestino;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textoImpostoSeguro;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textoImpostoPoupanca;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
 
