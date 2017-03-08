@@ -61,6 +61,7 @@
     <Compile Include="GerenciadorDeImposto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaldoInsuficienteExeception.cs" />
     <Compile Include="SeguroDeVida.cs" />
     <Compile Include="TotalizadorDeTributos.cs" />
     <Compile Include="TotalizadorDeContas.cs" />

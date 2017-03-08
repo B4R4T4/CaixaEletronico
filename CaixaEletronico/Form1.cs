@@ -20,47 +20,53 @@ namespace CaixaEletronico
         }
 
 
-       
-
-       
-
-       
-
-        
 
 
 
-       private void Form1_Load(object sender, EventArgs e)
-       {
 
-           var marcos = new Cliente();
-           marcos.Nome = "Marcos";
 
-           var victor = new Cliente();
-           victor.Nome = "Victor";
 
-           var david = new Cliente();
-           david.Nome = "David";
 
-           var conta1 = new ContaCorrente();
-           conta1.Numero = 1;
-           conta1.Titular = marcos;
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            var marcos = new Cliente();
+            marcos.Nome = "Marcos";
+
+            var victor = new Cliente();
+            victor.Nome = "Victor";
+
+            var david = new Cliente();
+            david.Nome = "David";
+
+            
+
+            var conta1 = new ContaCorrente();
+            conta1.Numero = 1;
+            conta1.Titular = marcos;
             conta1.Titular.cpf = "134.232.580-02";
+            
 
-           var conta2 = new ContaPoupanca();
-           conta2.Numero = 2;
-           conta2.Titular = victor;
+            var conta2 = new ContaPoupanca();
+            conta2.Numero = 2;
+            conta2.Titular = victor;
             conta2.Titular.cpf = "323.234.678-55";
 
             var conta3 = new ContaCorrente();
-           conta3.Numero = 3;
-           conta3.Titular = david;
+
+            conta3.Numero = 3;
+            conta3.Titular = david;
             conta3.Titular.cpf = "121.060.304-19";
 
+            textTotalCc.Text = Convert.ToString(ContaCorrente.TotalDeContas);
+
             this.contas = new Conta[10];
-           this.contas[0] = conta1;
-           this.contas[1] = conta2;
-           this.contas[2] = conta3;
+            this.contas[0] = conta1;
+            this.contas[1] = conta2;
+            this.contas[2] = conta3;
 
             ContaCorrente contaCorrente = new ContaCorrente();
             ContaPoupanca contaPoupanca = new ContaPoupanca();
@@ -69,24 +75,25 @@ namespace CaixaEletronico
             contaPoupanca.Deposita(100);
 
 
+            
 
 
+            foreach (Conta conta in contas)
+            {
+                comboContas.Items.Add(conta.Titular);
+                destinoDaTransferencia.Items.Add(conta.Titular);
 
-           foreach (Conta conta in contas)
-           {
-               comboContas.Items.Add(conta.Titular);
-               destinoDaTransferencia.Items.Add(conta.Titular);
-           }
+            }
 
-                 }
+        }
 
-       private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
-       {
-           int indiceSelecionado = comboContas.SelectedIndex;
-           Conta contaSelecionada = this.contas[indiceSelecionado];
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indiceSelecionado = comboContas.SelectedIndex;
+            Conta contaSelecionada = this.contas[indiceSelecionado];
 
-           this.MostraConta(contaSelecionada);
-       }
+            this.MostraConta(contaSelecionada);
+        }
 
         private Conta BuscaContaSelecionada()
         {
@@ -97,16 +104,16 @@ namespace CaixaEletronico
         }
 
         private void MostraConta(Conta contaSelecionada)
-       {
+        {
 
 
-           textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
-           textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
-           textoTitular.Text = Convert.ToString(contaSelecionada.Titular);
-           textoCpfOrigem.Text = Convert.ToString(contaSelecionada.Titular.cpf);
-        
+            textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
+            textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
+            textoTitular.Text = Convert.ToString(contaSelecionada.Titular);
+            textoCpfOrigem.Text = Convert.ToString(contaSelecionada.Titular.cpf);
 
-       }
+
+        }
 
 
         private void MostraContaDestino(Conta contaSelecionada)
@@ -121,15 +128,15 @@ namespace CaixaEletronico
 
         }
         private void destinoDaTransferencia_SelectedIndexChanged(object sender, EventArgs e)
-       {
+        {
             int indiceSelecionado = destinoDaTransferencia.SelectedIndex;
             Conta contaSelecionada = this.contas[indiceSelecionado];
 
             this.MostraContaDestino(contaSelecionada);
 
         }
-      
-        
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -155,14 +162,30 @@ namespace CaixaEletronico
 
         }
 
-       
+
 
         private void Deposita_Click(object sender, EventArgs e)
         {
             string textoDoValorDoDeposito = textoValorDeposito.Text;
             double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
             Conta contaSelecionada = this.BuscaContaSelecionada();
-            contaSelecionada.Deposita(valorDeposito);
+
+            try
+            {
+                contaSelecionada.Deposita(valorDeposito);
+
+            }
+            catch (System.ArgumentException)
+            {
+
+                MessageBox.Show("Valor inválido para depósito!");
+            }
+
+           catch (System.NullReferenceException)
+            {
+                MessageBox.Show("Digite um valor!");
+            }            
+
             this.MostraConta(contaSelecionada);
 
 
@@ -172,10 +195,29 @@ namespace CaixaEletronico
         {
             string textoValorDoSaque = textoValorSaque.Text;
             double valorSaque = Convert.ToDouble(textoValorDoSaque);
+
+
             Conta contaSelecionada = this.BuscaContaSelecionada();
+            try { 
             contaSelecionada.Saca(valorSaque);
-            this.MostraConta(contaSelecionada);
+                MessageBox.Show("Dinheiro liberado! ");
+
+                }
+            catch (SaldoInsuficienteExeception )
+            {
+                MessageBox.Show("Saldo Insuficiente.");
+                
+            }
+            catch (System.ArgumentException )
+            {
+
+                MessageBox.Show("Valor digitado para saque inválido. ");
+
+
+            }
+             this.MostraConta(contaSelecionada);
         }
+
 
         private void Transfere_Click(object sender, EventArgs e)
         {
@@ -194,7 +236,7 @@ namespace CaixaEletronico
             this.MostraConta(contaSelecionada);
 
 
-           
+
 
         }
 
@@ -204,7 +246,7 @@ namespace CaixaEletronico
 
         }
 
-      
+
         private void textoValorSaque_TextChanged(object sender, EventArgs e)
         {
 
@@ -262,6 +304,14 @@ namespace CaixaEletronico
             MessageBox.Show("O total de impostos é: " + gerenciador.Total);
 
         }
+
+        private void textTotalCc_TextChanged(object sender, EventArgs e)
+        {
+
+
+            textTotalCc.Text = Convert.ToString(ContaCorrente.TotalDeContas);
+
+        }
+
     }
 }
-

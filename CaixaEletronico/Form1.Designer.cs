@@ -61,7 +61,15 @@
             this.textoImpostoPoupanca = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textTotalCc = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textTotalCp = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboContas
@@ -291,7 +299,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(196, 298);
+            this.pictureBox1.Location = new System.Drawing.Point(502, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 121);
             this.pictureBox1.TabIndex = 27;
@@ -300,7 +308,7 @@
             // 
             // textoImpostoSeguro
             // 
-            this.textoImpostoSeguro.Location = new System.Drawing.Point(318, 208);
+            this.textoImpostoSeguro.Location = new System.Drawing.Point(100, 19);
             this.textoImpostoSeguro.Name = "textoImpostoSeguro";
             this.textoImpostoSeguro.Size = new System.Drawing.Size(100, 20);
             this.textoImpostoSeguro.TabIndex = 28;
@@ -318,7 +326,7 @@
             // 
             // textoImpostoPoupanca
             // 
-            this.textoImpostoPoupanca.Location = new System.Drawing.Point(335, 234);
+            this.textoImpostoPoupanca.Location = new System.Drawing.Point(100, 56);
             this.textoImpostoPoupanca.Name = "textoImpostoPoupanca";
             this.textoImpostoPoupanca.Size = new System.Drawing.Size(100, 20);
             this.textoImpostoPoupanca.TabIndex = 30;
@@ -326,7 +334,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(233, 211);
+            this.label11.Location = new System.Drawing.Point(9, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 13);
             this.label11.TabIndex = 31;
@@ -335,20 +343,77 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(256, 237);
+            this.label12.Location = new System.Drawing.Point(20, 56);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 13);
             this.label12.TabIndex = 32;
             this.label12.Text = "Poupanca";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textoImpostoSeguro);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textoImpostoPoupanca);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Location = new System.Drawing.Point(259, 215);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(234, 100);
+            this.groupBox1.TabIndex = 33;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Impostos";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textTotalCc);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.textTotalCp);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Location = new System.Drawing.Point(39, 324);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(162, 102);
+            this.groupBox2.TabIndex = 34;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Totalizador de Contas";
+            // 
+            // textTotalCc
+            // 
+            this.textTotalCc.Location = new System.Drawing.Point(89, 19);
+            this.textTotalCc.Name = "textTotalCc";
+            this.textTotalCc.Size = new System.Drawing.Size(51, 20);
+            this.textTotalCc.TabIndex = 28;
+            this.textTotalCc.TextChanged += new System.EventHandler(this.textTotalCc_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(20, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Poupanca";
+            // 
+            // textTotalCp
+            // 
+            this.textTotalCp.Location = new System.Drawing.Point(89, 53);
+            this.textTotalCp.Name = "textTotalCp";
+            this.textTotalCp.Size = new System.Drawing.Size(51, 20);
+            this.textTotalCp.TabIndex = 30;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(20, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 13);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Corrente";
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(464, 434);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.textoImpostoPoupanca);
+            this.ClientSize = new System.Drawing.Size(827, 438);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textoImpostoSeguro);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textoCpfDestino);
@@ -379,6 +444,10 @@
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,6 +488,12 @@
         private System.Windows.Forms.TextBox textoImpostoPoupanca;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textTotalCc;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textTotalCp;
+        private System.Windows.Forms.Label label14;
     }
 }
 
