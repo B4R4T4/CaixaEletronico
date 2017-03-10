@@ -23,15 +23,17 @@ namespace CaixaEletronico
             {
                 throw new ArgumentException();
             }
-            if (valor < this.Saldo)
+
+            if (this.Saldo >= valor)
             {
+                
+                this.Saldo -=( valor + valor* 0.02);
 
-
-                throw new SaldoInsuficienteExeception();
             }
-            else { 
-
-            this.Saldo -= valor * 0.02;
+          
+            else {
+                throw new SaldoInsuficienteExeception();
+            
             }
         }
         public override void Deposita(double valor)
@@ -53,5 +55,11 @@ namespace CaixaEletronico
             this.Saca(valor);
             destino.Deposita(valor);
         }
+        public override string ToString()
+        {
+            return this.Titular.Nome;
+        }
+
+       
     }
 }

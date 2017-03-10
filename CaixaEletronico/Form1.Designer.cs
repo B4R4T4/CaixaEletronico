@@ -68,6 +68,7 @@
             this.textTotalCp = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.formularioDeCadastro = new System.Windows.Forms.Button();
+            this.formularioRemocao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -86,6 +87,7 @@
             // 
             this.textoTitular.Location = new System.Drawing.Point(70, 119);
             this.textoTitular.Name = "textoTitular";
+            this.textoTitular.ReadOnly = true;
             this.textoTitular.Size = new System.Drawing.Size(122, 20);
             this.textoTitular.TabIndex = 1;
             this.textoTitular.TextChanged += new System.EventHandler(this.textoTitular_TextChanged_1);
@@ -94,6 +96,7 @@
             // 
             this.textoNumero.Location = new System.Drawing.Point(70, 145);
             this.textoNumero.Name = "textoNumero";
+            this.textoNumero.ReadOnly = true;
             this.textoNumero.Size = new System.Drawing.Size(122, 20);
             this.textoNumero.TabIndex = 2;
             // 
@@ -101,6 +104,7 @@
             // 
             this.textoSaldo.Location = new System.Drawing.Point(70, 171);
             this.textoSaldo.Name = "textoSaldo";
+            this.textoSaldo.ReadOnly = true;
             this.textoSaldo.Size = new System.Drawing.Size(122, 20);
             this.textoSaldo.TabIndex = 3;
             this.textoSaldo.TextChanged += new System.EventHandler(this.textoSaldo_TextChanged_1);
@@ -219,6 +223,7 @@
             // 
             this.textoTitularDestino.Location = new System.Drawing.Point(300, 122);
             this.textoTitularDestino.Name = "textoTitularDestino";
+            this.textoTitularDestino.ReadOnly = true;
             this.textoTitularDestino.Size = new System.Drawing.Size(123, 20);
             this.textoTitularDestino.TabIndex = 17;
             // 
@@ -226,6 +231,7 @@
             // 
             this.textoNumeroDestino.Location = new System.Drawing.Point(300, 148);
             this.textoNumeroDestino.Name = "textoNumeroDestino";
+            this.textoNumeroDestino.ReadOnly = true;
             this.textoNumeroDestino.Size = new System.Drawing.Size(123, 20);
             this.textoNumeroDestino.TabIndex = 18;
             // 
@@ -233,6 +239,7 @@
             // 
             this.textoSaldoDestino.Location = new System.Drawing.Point(300, 177);
             this.textoSaldoDestino.Name = "textoSaldoDestino";
+            this.textoSaldoDestino.ReadOnly = true;
             this.textoSaldoDestino.Size = new System.Drawing.Size(123, 20);
             this.textoSaldoDestino.TabIndex = 19;
             this.textoSaldoDestino.TextChanged += new System.EventHandler(this.textoSaldoDestino_TextChanged);
@@ -268,6 +275,7 @@
             // 
             this.textoCpfOrigem.Location = new System.Drawing.Point(70, 95);
             this.textoCpfOrigem.Name = "textoCpfOrigem";
+            this.textoCpfOrigem.ReadOnly = true;
             this.textoCpfOrigem.Size = new System.Drawing.Size(122, 20);
             this.textoCpfOrigem.TabIndex = 23;
             // 
@@ -293,6 +301,7 @@
             // 
             this.textoCpfDestino.Location = new System.Drawing.Point(300, 98);
             this.textoCpfDestino.Name = "textoCpfDestino";
+            this.textoCpfDestino.ReadOnly = true;
             this.textoCpfDestino.Size = new System.Drawing.Size(123, 20);
             this.textoCpfDestino.TabIndex = 25;
             this.textoCpfDestino.TextChanged += new System.EventHandler(this.textoCpfDestino_TextChanged);
@@ -420,9 +429,20 @@
             this.formularioDeCadastro.UseVisualStyleBackColor = true;
             this.formularioDeCadastro.Click += new System.EventHandler(this.formularioDeCadastro_Click);
             // 
+            // formularioRemocao
+            // 
+            this.formularioRemocao.Location = new System.Drawing.Point(249, 24);
+            this.formularioRemocao.Name = "formularioRemocao";
+            this.formularioRemocao.Size = new System.Drawing.Size(123, 26);
+            this.formularioRemocao.TabIndex = 36;
+            this.formularioRemocao.Text = "Remover Contas";
+            this.formularioRemocao.UseVisualStyleBackColor = true;
+            this.formularioRemocao.Click += new System.EventHandler(this.FormularioRemocao_Click);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(827, 438);
+            this.Controls.Add(this.formularioRemocao);
             this.Controls.Add(this.formularioDeCadastro);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -508,6 +528,7 @@
         private System.Windows.Forms.TextBox textTotalCp;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button formularioDeCadastro;
+        private System.Windows.Forms.Button formularioRemocao;
     }
 }
 

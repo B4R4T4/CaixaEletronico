@@ -23,9 +23,11 @@
 
         public override string ToString()
         {
-            return this.
-                Nome;
+            return this.Nome;
         }
+
+      
+
 
 
         public bool PodeAbrirContaSozinho()
