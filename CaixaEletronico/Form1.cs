@@ -12,27 +12,19 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
-        Conta[] contas;
+        private Conta[] contas;
+        private int quantidadeDeContas;
+        
         public Form1()
         {
 
             InitializeComponent();
         }
 
-
-
-
-
-
-
-
-
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            contas = new ContaCorrente[20];
+            /*
             var marcos = new Cliente();
             marcos.Nome = "Marcos";
 
@@ -41,6 +33,15 @@ namespace CaixaEletronico
 
             var david = new Cliente();
             david.Nome = "David";
+
+            var joaopaulo = new Cliente();
+            joaopaulo.Nome = "João Paulo";
+
+            var conta0 = new ContaPoupanca();
+            conta0.Numero = 666;
+            conta0.Titular = joaopaulo;
+            conta0.Titular.cpf = "098.345.234.13";
+
 
             
 
@@ -62,37 +63,49 @@ namespace CaixaEletronico
             conta3.Titular.cpf = "121.060.304-19";
 
             textTotalCc.Text = Convert.ToString(ContaCorrente.TotalDeContas);
+            textTotalCp.Text = Convert.ToString(ContaPoupanca.TotalDeContas);
 
             this.contas = new Conta[10];
             this.contas[0] = conta1;
             this.contas[1] = conta2;
             this.contas[2] = conta3;
+            this.contas[3] = conta0;*/
+            
 
-            ContaCorrente contaCorrente = new ContaCorrente();
-            ContaPoupanca contaPoupanca = new ContaPoupanca();
+         
+        }
 
-            contaCorrente.Deposita(100);
-            contaPoupanca.Deposita(100);
-
+             private void formularioDeCadastro_Click(object sender, EventArgs e)
+        {
+            CadastroDeContas formularioDeCadastro = new CadastroDeContas(this);
+            formularioDeCadastro.ShowDialog();
+        
 
             
 
-
+            /*
             foreach (Conta conta in contas)
             {
                 comboContas.Items.Add(conta.Titular);
-                destinoDaTransferencia.Items.Add(conta.Titular);
-
+                destinoDaTransferencia.Items.Add(conta);
+                
             }
+            */
 
-        }
+}
 
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             int indiceSelecionado = comboContas.SelectedIndex;
             Conta contaSelecionada = this.contas[indiceSelecionado];
 
+            textoTitular.Text = contaSelecionada.Titular.Nome;
+            textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
+            textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
+
             this.MostraConta(contaSelecionada);
+            this.BuscaContaSelecionada();
         }
 
         private Conta BuscaContaSelecionada()
@@ -106,20 +119,19 @@ namespace CaixaEletronico
         private void MostraConta(Conta contaSelecionada)
         {
 
-
+            
             textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
             textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
             textoTitular.Text = Convert.ToString(contaSelecionada.Titular);
             textoCpfOrigem.Text = Convert.ToString(contaSelecionada.Titular.cpf);
-
+           
 
         }
 
 
         private void MostraContaDestino(Conta contaSelecionada)
         {
-
-
+            
             textoNumeroDestino.Text = Convert.ToString(contaSelecionada.Numero);
             textoSaldoDestino.Text = Convert.ToString(contaSelecionada.Saldo);
             textoTitularDestino.Text = Convert.ToString(contaSelecionada.Titular);
@@ -161,92 +173,125 @@ namespace CaixaEletronico
         {
 
         }
-
-
-
+        
         private void Deposita_Click(object sender, EventArgs e)
         {
             string textoDoValorDoDeposito = textoValorDeposito.Text;
-            double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
-            Conta contaSelecionada = this.BuscaContaSelecionada();
 
-            try
+            if (String.IsNullOrEmpty(textoDoValorDoDeposito))
             {
-                contaSelecionada.Deposita(valorDeposito);
+
+                MessageBox.Show("Digite uma valor a ser depositado!");
 
             }
-            catch (System.ArgumentException)
+            else
             {
+                {
+                    double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
 
-                MessageBox.Show("Valor inválido para depósito!");
+
+                }
+                Conta contaSelecionada = this.BuscaContaSelecionada();
+
+
+
+                {
+                    MessageBox.Show("Valor Depositado!");
+
+                }
+                try
+                {
+                    double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
+                    contaSelecionada.Deposita(valorDeposito);
+
+                }
+                catch (System.ArgumentException)
+                {
+
+                    MessageBox.Show("Valor inválido para depósito!");
+                }
+
+                catch (System.NullReferenceException)
+                {
+                    MessageBox.Show("Digite um valor!");
+                }
+
+
+                this.MostraConta(contaSelecionada);
+
+
             }
-
-           catch (System.NullReferenceException)
-            {
-                MessageBox.Show("Digite um valor!");
-            }            
-
-            this.MostraConta(contaSelecionada);
-
-
         }
 
         private void Saca_Click(object sender, EventArgs e)
         {
             string textoValorDoSaque = textoValorSaque.Text;
-            double valorSaque = Convert.ToDouble(textoValorDoSaque);
+           
 
-
-            Conta contaSelecionada = this.BuscaContaSelecionada();
-            try { 
-            contaSelecionada.Saca(valorSaque);
-                MessageBox.Show("Dinheiro liberado! ");
+            if (String.IsNullOrEmpty(textoValorDoSaque))
+            {
+                MessageBox.Show("Digite algum valor a ser sacado!");
+            }
+            else
+            {
+                double valorSaque = Convert.ToDouble(textoValorDoSaque);
+                Conta contaSelecionada = this.BuscaContaSelecionada();
+                try
+                {
+                    contaSelecionada.Saca(valorSaque);
+                    MessageBox.Show("Dinheiro liberado! ");
 
                 }
-            catch (SaldoInsuficienteExeception )
-            {
-                MessageBox.Show("Saldo Insuficiente.");
-                
+                catch (SaldoInsuficienteExeception)
+                {
+                    MessageBox.Show("Saldo Insuficiente.");
+
+                }
+                catch (System.ArgumentException)
+                {
+
+                    MessageBox.Show("Valor digitado para saque inválido. ");
+
+
+                }
+                this.MostraConta(contaSelecionada);
             }
-            catch (System.ArgumentException )
-            {
-
-                MessageBox.Show("Valor digitado para saque inválido. ");
-
-
-            }
-             this.MostraConta(contaSelecionada);
         }
-
-
+        
         private void Transfere_Click(object sender, EventArgs e)
         {
-            Conta contaSelecionada = this.BuscaContaSelecionada();
-
-            int indiceDaContaDestino = destinoDaTransferencia.SelectedIndex;
-
-            Conta contaDestino = this.contas[indiceDaContaDestino];
+           
 
             string textoValor = valorOperacao.Text;
-            double valorTransferencia = Convert.ToDouble(textoValor);
+            if (String.IsNullOrEmpty(textoValor))
+            {
 
-            contaSelecionada.Transfere(contaDestino, valorTransferencia);
-            textoSaldoDestino.Text = Convert.ToString(contaDestino.Saldo);
+                MessageBox.Show("Digite algum valor a ser transferido!");
+            }
+            else
+            {
+                Conta contaSelecionada = this.BuscaContaSelecionada();
 
-            this.MostraConta(contaSelecionada);
+                int indiceDaContaDestino = destinoDaTransferencia.SelectedIndex;
 
+                Conta contaDestino = this.contas[indiceDaContaDestino];
 
+                double valorTransferencia = Convert.ToDouble(textoValor);
 
+                contaSelecionada.Transfere(contaDestino, valorTransferencia);
+                textoSaldoDestino.Text = Convert.ToString(contaDestino.Saldo);
+
+                this.MostraConta(contaSelecionada);
+
+            }
 
         }
-
-
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
-
+        
         private void textoValorSaque_TextChanged(object sender, EventArgs e)
         {
 
@@ -313,5 +358,20 @@ namespace CaixaEletronico
 
         }
 
+        private void textTotalCp_TextChanged(object sender, EventArgs e)
+        {
+            textTotalCp.Text = Convert.ToString(ContaPoupanca.TotalDeContas);
+        }
+        public void AdcionaContas(Conta conta)
+        {
+            this.contas[this.quantidadeDeContas] = conta;
+            this.quantidadeDeContas++;
+
+            {
+                comboContas.Items.Add(conta);
+            } 
+        }
+
+       
     }
 }

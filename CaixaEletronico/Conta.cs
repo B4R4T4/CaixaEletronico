@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    abstract class Conta
+    public abstract class Conta
     {
         public int Numero { get; set; }
-        public Cliente Titular { get; set; }
+        public Cliente Titular { get;  set; }
         public double Saldo { get; protected set; }
 
 

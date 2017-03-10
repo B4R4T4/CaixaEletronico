@@ -8,7 +8,13 @@ namespace CaixaEletronico
 {
     class ContaPoupanca : Conta, ITributavel
     {
-       
+        public static int TotalDeContas { get; private set; } = 0;
+        public ContaPoupanca()
+        {
+            ContaPoupanca.TotalDeContas++;
+
+
+        }
 
         public override void Deposita (double valor)
         {
@@ -39,6 +45,7 @@ namespace CaixaEletronico
 
                 throw new SaldoInsuficienteExeception();
             }
+
             else
             {
 
