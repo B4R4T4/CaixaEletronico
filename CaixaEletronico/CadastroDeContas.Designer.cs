@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TextoCpf = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tipoDeConta = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titularConta
@@ -47,7 +49,7 @@
             // 
             // numeroConta
             // 
-            this.numeroConta.Location = new System.Drawing.Point(121, 119);
+            this.numeroConta.Location = new System.Drawing.Point(121, 135);
             this.numeroConta.Name = "numeroConta";
             this.numeroConta.Size = new System.Drawing.Size(100, 20);
             this.numeroConta.TabIndex = 1;
@@ -74,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 122);
+            this.label2.Location = new System.Drawing.Point(25, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 5;
@@ -82,7 +84,7 @@
             // 
             // TextoCpf
             // 
-            this.TextoCpf.Location = new System.Drawing.Point(121, 155);
+            this.TextoCpf.Location = new System.Drawing.Point(121, 171);
             this.TextoCpf.Name = "TextoCpf";
             this.TextoCpf.Size = new System.Drawing.Size(100, 20);
             this.TextoCpf.TabIndex = 6;
@@ -91,17 +93,37 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 162);
+            this.label3.Location = new System.Drawing.Point(34, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "CPF";
+            // 
+            // tipoDeConta
+            // 
+            this.tipoDeConta.FormattingEnabled = true;
+            this.tipoDeConta.Location = new System.Drawing.Point(121, 43);
+            this.tipoDeConta.Name = "tipoDeConta";
+            this.tipoDeConta.Size = new System.Drawing.Size(100, 21);
+            this.tipoDeConta.TabIndex = 8;
+            this.tipoDeConta.SelectedIndexChanged += new System.EventHandler(this.tipoDeConta_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Tipo de Conta";
             // 
             // CadastroDeContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 320);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tipoDeConta);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TextoCpf);
             this.Controls.Add(this.label2);
@@ -126,5 +148,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TextoCpf;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox tipoDeConta;
+        private System.Windows.Forms.Label label4;
     }
 }

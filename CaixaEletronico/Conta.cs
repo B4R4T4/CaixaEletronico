@@ -11,7 +11,7 @@ namespace CaixaEletronico
         public int Numero { get; set; }
         public Cliente Titular { get;  set; }
         public double Saldo { get; protected set; }
-
+        public String tipo { get; set; }
 
 
         public abstract void Saca(double valor);

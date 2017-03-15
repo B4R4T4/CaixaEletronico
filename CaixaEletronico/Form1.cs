@@ -24,10 +24,17 @@ namespace CaixaEletronico
         private void Form1_Load(object sender, EventArgs e)
         {
             contas = new ContaCorrente[20];
-           
-            
 
-         
+            foreach (Conta conta in this.contas)
+            {
+                if (conta != null)
+                {
+                    comboContas.Items.Add(conta);
+                    destinoDaTransferencia.Items.Add(conta);
+                }
+            }
+
+
         }
 
            
@@ -245,6 +252,7 @@ namespace CaixaEletronico
                     contaSelecionada.Transfere(contaDestino, valorTransferencia);
                     textoSaldoDestino.Text = Convert.ToString(contaDestino.Saldo);
 
+                    MessageBox.Show("Valor transferido com sucesso!");
                     this.MostraConta(contaSelecionada);
 
                 }
@@ -344,22 +352,37 @@ namespace CaixaEletronico
             } 
         }
 
-        private void FormularioRemocao_Click(object sender, EventArgs e)
+        public void RemoveContas(Conta conta)
         {
-            CadastroDeContas FormularioRemocao = new RemocaoDeContas(this);
-            FormularioRemocao.ShowDialog();
 
-        }
-
-        public void RemocaoDeContas(Conta conta)
-        {
-            this.contas[this.quantidadeDeContas] = conta;
-            this.quantidadeDeContas--;
-
+            comboContas.Items.Remove(conta);
+            int i;
+            for (i = 0; i < this.quantidadeDeContas; i++)
             {
-                comboContas.Remove(conta);
-                destinoDaTransferencia.Remove(conta);
+
+                if (this.contas[i] == conta)
+                {
+                    break;
+
+                }
+
+                while (i + 1 < this.quantidadeDeContas)
+                {
+
+                    this.contas[i] = this.contas[i + 1];
+                    i++;
+                }
             }
         }
+            
+        
+
+        private void botaoRemoverConta_Click(object sender, EventArgs e)
+        {
+            Conta conta = BuscaContaSelecionada();
+            this.RemoveContas(conta);
+        }
     }
-}
+        }
+    
+

@@ -16,13 +16,22 @@ namespace CaixaEletronico
         public CadastroDeContas(Form1 aplicacaoPrincipal)
         {
             this.aplicacaoPrincipal = aplicacaoPrincipal;
-
+            
+            
 
             InitializeComponent();
+           
         }
+
+        
+           
+
+                
 
         private void criarConta_Click(object sender, EventArgs e)
         {
+            tipoDeConta.Items.Add("Poupanca");
+            tipoDeConta.Items.Add("Corrente");
 
             if (String.IsNullOrEmpty(titularConta.Text))
             {
@@ -49,12 +58,26 @@ namespace CaixaEletronico
 
                     else
                     {
+                        
+
+                        int index = this.tipoDeConta.SelectedIndex;
+                        Conta c = null;
+                        if (tipoDeConta.SelectedText == "Poupanca")
+                        {
+                            c = new ContaPoupanca();
+                                                    }
+                        else
+                        {
+                            c = new ContaCorrente();
+                        }
+
+                        
+                       
+
                         int numero = Convert.ToInt32(numeroConta.Text);
-
-
                         string cpf = Convert.ToString(TextoCpf.Text);
                         string titular = titularConta.Text;
-
+                        
 
 
                         var contas = new List<Conta>();
@@ -68,6 +91,7 @@ namespace CaixaEletronico
                         conta.Numero = numero;
                         conta.Titular = cliente;
                         conta.Titular.cpf = cliente.cpf;
+                        
 
 
                         this.aplicacaoPrincipal.AdcionaContas(conta);
@@ -83,7 +107,8 @@ namespace CaixaEletronico
         }
         private void CadastroDeContas_Load(object sender, EventArgs e)
         {
-
+            this.tipoDeConta.Items.Add("Poupanca");
+            this.tipoDeConta.Items.Add("Corrente");
         }
 
         private void titularConta_TextChanged(object sender, EventArgs e)
@@ -92,6 +117,11 @@ namespace CaixaEletronico
         }
 
         private void textoCpf_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tipoDeConta_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
